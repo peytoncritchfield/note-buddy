@@ -1,50 +1,67 @@
 <template>
-  <v-app>
-    <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+  <v-app id="app">
+    <div>
+      <img src="@/assets/Noted.png">
+    </div>
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+        <transition name="router-anim">
+        <router-view/>
+        </transition>
 
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <router-view />
-    </v-main>
   </v-app>
 </template>
 
 <script>
-export default {
-  name: "App",
 
-  data: () => ({
-    //
-  }),
+
+export default {
+ 
 };
 </script>
+
+<style scoped>
+
+
+#app {
+  /* background-color: #149DFE; */
+  background: linear-gradient(60deg, #97cbf3, #0795FF);
+  text-align: center;
+  min-width: 200px;
+}
+
+img {
+  width: 200px;
+  height: auto;
+  margin-top: 10vh;
+}
+
+.router-anim-enter-active {
+  animation: coming 1s;
+  animation-delay: .5s;
+  opacity: 0;
+}
+
+.router-anim-leave-active {
+  animation: going 1s;
+}
+
+@keyframes going {
+  from {
+    transform: translateX(0);
+  } to {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+}
+
+@keyframes coming {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  } to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+ 
+</style>
